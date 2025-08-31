@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Simulator</h1>
+    <form method="POST">
+      <label>Villain:</label>
+      <select name="villain">
+        {% for v in villains %}
+        <option>{{ v }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Location:</label>
+      <select name="location">
+        {% for l in locations %}
+        <option>{{ l }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Emotion:</label>
+      <select name="emotion">
+        <option>Neutral</option>
+        <option>Concerned</option>
+        <option>Fearful</option>
+        <option>Angry</option>
+      </select>
+
+      <button type="submit">Generate</button>
+    </form>
+
+    {% if result %}
+    <div class="output">
+      <pre>{{ result }}</pre>
+    </div>
+    {% endif %}
+
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/about">About</a> |
+      <a href="/safety">Safety</a>
+    </nav>
+  </div>
+</body>
+</html>
